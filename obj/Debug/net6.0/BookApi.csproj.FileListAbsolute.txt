@@ -44,3 +44,11 @@ D:\BookApi\obj\Debug\net6.0\refint\BookApi.dll
 D:\BookApi\obj\Debug\net6.0\BookApi.pdb
 D:\BookApi\obj\Debug\net6.0\BookApi.genruntimeconfig.cache
 D:\BookApi\obj\Debug\net6.0\ref\BookApi.dll
+D:\BookApi\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\BookApi\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+D:\BookApi\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\BookApi\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+D:\BookApi\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+D:\BookApi\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\BookApi\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+D:\BookApi\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll

@@ -1,5 +1,6 @@
 using BookApi.Interfaces;
 using BookApi.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookApi.Controllers;
@@ -21,6 +22,7 @@ public class BookController : ControllerBase
       return Ok(await _bookService.Get());  
     }
 
+    [Authorize]
     [HttpGet("{id}")]
     public async Task<ActionResult<Book>> Get(string id)
     {

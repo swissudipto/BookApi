@@ -3,7 +3,7 @@ using BookApi.Repository;
 using BookApi.Model;
 using BookApi.Interfaces;
 
-namespace inventoryApiDotnet.Repository
+namespace BookApi.Repository
 {
     public class BookRepository : BaseRepository<Book>, IBookRepository
     {
