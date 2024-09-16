@@ -10,11 +10,11 @@
         "projectUniqueName": "D:\\BookApi\\BookApi.csproj",
         "projectName": "BookApi",
         "projectPath": "D:\\BookApi\\BookApi.csproj",
-        "packagesPath": "C:\\Users\\Sudipto\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\boses\\.nuget\\packages\\",
         "outputPath": "D:\\BookApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Sudipto\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\boses\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"

@@ -30,7 +30,7 @@ builder.Services.AddSwaggerGen(c =>
         BearerFormat = "JWT",
         In = ParameterLocation.Header,
         Name = "Authorization",
-        Description = "Enter your Bearer token in the format `Bearer {token}`"
+        Description = "Enter your Bearer token in the format `token`"
     });
 
     c.AddSecurityRequirement(new OpenApiSecurityRequirement
@@ -52,23 +52,26 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddScoped<IBookservice, Bookservice>();
 builder.Services.AddScoped<IMongoContext, MongoContext>();
 builder.Services.AddScoped<IBookRepository, BookRepository>();
-builder.Services.AddScoped<IAuthservice,Authservice>();
+builder.Services.AddScoped<IAuthservice, Authservice>();
 builder.Services.Configure<MongoDBSettings>(builder.Configuration.GetSection("MongoDB"));
 
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(options => 
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+                .AddJwtBearer(options =>
                               options.TokenValidationParameters = new TokenValidationParameters()
                               {
-                                ValidateIssuer = true,
-                                ValidateAudience = true,
-                                ValidateLifetime = true,
-                                ValidateIssuerSigningKey = true,
-                                ValidIssuer = builder.Configuration["Jwt:Issuer"],
-                                ValidAudience = builder.Configuration["Jwt:Audience"],
-                                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+                                  ValidateIssuer = true,
+                                  ValidateAudience = true,
+                                  ValidateLifetime = true,
+                                  ValidateIssuerSigningKey = true,
+                                  ValidIssuer = builder.Configuration["Jwt:Issuer"],
+                                  ValidAudience = builder.Configuration["Jwt:Audience"],
+                                  IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
                               });
-builder.Services.AddAuthorization();                              
-                                                            
+
 BsonSerializer.RegisterIdGenerator(typeof(string), new StringObjectIdGenerator());
 
 var app = builder.Build();
@@ -82,9 +85,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
-
 app.UseAuthentication();
+
+app.UseAuthorization();
 
 app.MapControllers();
 
