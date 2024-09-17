@@ -53,6 +53,7 @@ builder.Services.AddScoped<IBookservice, Bookservice>();
 builder.Services.AddScoped<IMongoContext, MongoContext>();
 builder.Services.AddScoped<IBookRepository, BookRepository>();
 builder.Services.AddScoped<IAuthservice, Authservice>();
+builder.Services.AddScoped<IUserRepository,UserRepository>();
 builder.Services.Configure<MongoDBSettings>(builder.Configuration.GetSection("MongoDB"));
 
 builder.Services.AddAuthentication(options =>

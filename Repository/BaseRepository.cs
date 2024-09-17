@@ -20,9 +20,10 @@ namespace BookApi.Repository
             DbSet = Context.GetCollection<TEntity>(typeof(TEntity).Name);
         }
 
-        public virtual async Task Add(TEntity obj)
+        public virtual async Task<TEntity> Add(TEntity obj)
         {
             await DbSet.InsertOneAsync(obj);
+            return obj;
         }
 
         public virtual async Task<TEntity> GetById(string id)
@@ -46,6 +47,25 @@ namespace BookApi.Repository
         {
             var result = await DbSet.DeleteOneAsync(Builders<TEntity>.Filter.Eq("_id", id));
             return result.DeletedCount > 0 ? true : false;
+        }
+
+        public async Task<List<TEntity>> QueryCollectionAsync(TEntity obj,
+                                                              Dictionary<string, object> filterParameters)
+        {
+            // Build the filter
+            var filterBuilder = Builders<TEntity>.Filter;
+            var filter = FilterDefinition<TEntity>.Empty;
+
+            foreach (var parameter in filterParameters)
+            {
+                // Add each filter parameter to the filter
+                filter &= filterBuilder.Eq(parameter.Key, BsonValue.Create(parameter.Value));
+            }
+
+            // Query the collection with the constructed filter
+            var results = await DbSet.Find(filter).ToListAsync();
+
+            return results;
         }
 
         public void Dispose()

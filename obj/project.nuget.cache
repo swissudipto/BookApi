@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3B1i4QDJ1kc=",
+  "dgSpecHash": "PKAq/+WPfYk=",
   "success": true,
-  "projectFilePath": "D:\\BookApi\\BookApi.csproj",
+  "projectFilePath": "d:\\BookApi\\BookApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\boses\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
     "C:\\Users\\boses\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",

@@ -5,24 +5,30 @@ using BookApi.Interfaces;
 using BookApi.Model;
 using Microsoft.IdentityModel.Tokens;
 using ServiceStack;
+using ServiceStack.Auth;
 
 namespace BookApi.Services
 {
     public class Authservice : IAuthservice
     {
         private readonly IConfiguration _configuration;
-        public Authservice(IConfiguration configuration)
+        private readonly IUserRepository _userRepo;
+        public Authservice(IConfiguration configuration, IUserRepository userRepo)
         {
             _configuration = configuration;
+            _userRepo = userRepo;
         }
 
         public async Task<User> Authenticate(User user)
         {
-            if (user.UserName == "string" && user.userPassword == "string")
-            {
-                return new User { UserName = user.UserName, userPassword = user.userPassword, UserEmail = "sbose562@gmail.com" };
-            }
-            return null;
+            var filterParameters = new Dictionary<string, object>()
+              {
+                {nameof(User.UserName),user.UserName},
+                {nameof(User.UserPassword),user.UserPassword}
+              };
+
+            var response = await _userRepo.QueryCollectionAsync(user, filterParameters);
+            return response.FirstOrDefault();
         }
 
         public string GenerateJWT(User user)
@@ -35,7 +41,13 @@ namespace BookApi.Services
                                         null,
                                         expires: DateTime.Now.AddMinutes(60),
                                         signingCredentials: credentials);
-            return  new JwtSecurityTokenHandler().WriteToken(token);
+            return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+
+        public async Task<User> CreateNewUser(User user)
+        {
+            var response = await _userRepo.Add(user);
+            return response;
         }
     }
 }

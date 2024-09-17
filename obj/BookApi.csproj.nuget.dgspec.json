@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\BookApi\\BookApi.csproj": {}
+    "d:\\BookApi\\BookApi.csproj": {}
   },
   "projects": {
-    "D:\\BookApi\\BookApi.csproj": {
+    "d:\\BookApi\\BookApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\BookApi\\BookApi.csproj",
+        "projectUniqueName": "d:\\BookApi\\BookApi.csproj",
         "projectName": "BookApi",
-        "projectPath": "D:\\BookApi\\BookApi.csproj",
+        "projectPath": "d:\\BookApi\\BookApi.csproj",
         "packagesPath": "C:\\Users\\boses\\.nuget\\packages\\",
-        "outputPath": "D:\\BookApi\\obj\\",
+        "outputPath": "d:\\BookApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\boses\\AppData\\Roaming\\NuGet\\NuGet.Config"

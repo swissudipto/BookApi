@@ -18,6 +18,7 @@ namespace BookApi.Controllers
         }
 
         [HttpPost]
+        [Route("login")]
         public async Task<IActionResult> login([FromBody] User user)
         {
             IActionResult response = Unauthorized();
@@ -25,9 +26,22 @@ namespace BookApi.Controllers
             if (authuser != null)
             {
                 var tokenString =  _authservice.GenerateJWT(authuser);
-                response = Ok(new {tokenString});
+                response = Ok(new { Token = tokenString});
             }
             return Ok(response);
+        }
+
+        [HttpPost]
+        [Route("CreateUser")]
+        public async Task<IActionResult> CreateUser([FromBody] User user)
+        {
+            IActionResult response = Unauthorized();
+            var newUser = await _authservice.CreateNewUser(user);
+            if(newUser != null)
+            {
+                return Ok(newUser);
+            }
+            return response;
         }
 
     }
