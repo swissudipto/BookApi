@@ -43,6 +43,5 @@ namespace BookApi.Services
         {
             return await _bookRepository.Remove(Id);
         }
-
     }
 }

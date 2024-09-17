@@ -1,9 +1,6 @@
 ﻿using MongoDB.Driver;
 using BookApi.Interface;
 using ServiceStack;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using MongoDB.Bson;
 
 namespace BookApi.Repository
